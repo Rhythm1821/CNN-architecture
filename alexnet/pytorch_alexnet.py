@@ -21,6 +21,8 @@ class AlexNet(nn.Module):
             nn.Conv2d(in_channels=384,out_channels=256,kernel_size=3,stride=1,padding=1),
             nn.ReLU(),
             nn.MaxPool2d(kernel_size=3,stride=2),
+        )
+        self.layer_4(
             nn.Flatten(),
             nn.Linear(in_features=(256 * 6 * 6),out_features=4096),
             nn.ReLU(),
@@ -36,6 +38,7 @@ class AlexNet(nn.Module):
         x = self.layer_1(x)
         x = self.layer_2(x)
         x = self.layer_3(x)
+        x = self.layer_4(x)
         return x
     
 
